@@ -14,7 +14,7 @@
     <!-- 打开邀请函 -->
     <div
       class="editor-open"
-      v-if="(canStart || hasClosed) && !canOpen"
+      v-if="hasClosed && !canOpen"
       @click="canOpen = true"
     >
       <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
@@ -23,8 +23,7 @@
       </svg>
     </div>
     <Executions :canExecute="canExecute" @onUpdating="scrollToBottom" @onFinish="canOpen = true"/>
-    <invitation :canOpen="canOpen" @onClose="canOpen = false, hasClosed = true" @sendBarrage="onAfterSending"/>
-    <Barrage :wish="wish" :canStart="canStart"/>
+    <invitation :canOpen="canOpen" @onClose="canOpen = false, hasClosed = true" />
   </div>
 </template>
 
@@ -36,11 +35,10 @@
 
   import Executions from './Executions'
   import Invitation from './Invitation'
-  import Barrage from './Barrage'
 
   export default {
     name: 'Editor',
-    components: { Executions, Invitation, Barrage },
+    components: { Executions, Invitation },
     data() {
       return {
         startDate: '',
@@ -49,9 +47,7 @@
         isCursorVisible: 1,
         canExecute: false,
         canOpen: false,
-        wish: '',
         hasClosed: false,
-        canStart: false
       }
     },
     created() {
@@ -104,14 +100,6 @@
           typing = requestAnimationFrame(step)
         })
       },
-      // 发送弹幕之后
-      onAfterSending(wish) {
-        this.wish = wish
-        this.canOpen = false
-        setTimeout(() => {
-          this.canStart = true
-        }, 800)
-      }
     }
   }
 </script>

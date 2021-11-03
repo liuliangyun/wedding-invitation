@@ -4,25 +4,13 @@
       <div class="invitation-cover">
         <div class="cover-content" :class="{'invitation-up':isOpening}">
           <div class="content-inside">
-            <img class="content-inside-photo" src="../images/photo.jpg">
+            <img class="content-inside-photo" src="../images/photo-new.jpeg">
             <p>我们结婚啦！</p>
-            <p><b>Jun & undefined</b></p>
-            <p>时间：invalid date value</p>
-            <p>地点：<b>location can not be found</b></p>
+            <p><b>柳靓云（蹦蹦） & 张克毅（跳跳）</b></p>
+            <p>时间：2022-01-01</p>
+            <p>地点：<b>江西省景德镇市罗曼园酒店</b></p>
             <div class="content-inside-bless">
-              <input
-                placeholder="写下你的祝福" 
-                @keyup.enter="sendBarrage"
-                @focus="isFocused = true"
-                @blur="isFocused = false, hasEntered = false"
-                v-model="wish"
-                ref="wishInput"
-              >
-              <p v-if="!wish && isFocused && hasEntered">请输入祝福哦</p>
-              <div>
-                <button @click="sendBarrage">发送祝福弹幕</button>
-                <button @click="closeInvitation">关闭</button>
-              </div>
+              <button @click="closeInvitation">关闭</button>
             </div>
           </div>
         </div>
@@ -40,9 +28,6 @@ export default {
   data() {
     return {
       isOpening: false,
-      wish: '',
-      isFocused: false,
-      hasEntered: false
     }
   },
   methods: {
@@ -56,20 +41,6 @@ export default {
         this.$emit('onClose')
       }, 660)
     },
-    // 发送弹幕
-    sendBarrage(){
-      this.$nextTick(() => {
-        this.hasEntered = true
-        if (!this.wish) {
-          return
-        }
-        this.isOpening = false
-        this.$refs.wishInput.blur()
-        setTimeout(() => {
-          this.$emit('sendBarrage', this.wish)
-        }, 660)
-      })
-    }
   }
 }
 </script>
@@ -147,21 +118,6 @@ export default {
               margin-bottom: 5px;
             }
             .content-inside-bless{
-              input{
-                width: 100%;
-                height: 35px;
-                margin-bottom: 10px;
-                outline: none;
-                border: none;
-                border-bottom: 1px solid #f7debb;
-                color: #a9895d;
-                background: transparent;
-                font-size: 16px;
-                &::-webkit-input-placeholder { color: #E8D1B1;font-size: 12px; }
-                &::-moz-placeholder { color: #E8D1B1;font-size: 12px; }
-                &:-ms-input-placeholder { color: #E8D1B1;font-size: 12px; }
-                &:-moz-placeholder { color: #E8D1B1;font-size: 12px; }
-              }
               >div{
                 display: flex;
                 button{
