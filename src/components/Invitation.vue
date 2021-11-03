@@ -5,10 +5,15 @@
         <div class="cover-content" :class="{'invitation-up':isOpening}">
           <div class="content-inside">
             <img class="content-inside-photo" src="../images/photo-new.jpeg">
-            <p>我们结婚啦！</p>
-            <p><b>柳靓云（蹦蹦） & 张克毅（跳跳）</b></p>
-            <p>时间：2022-01-01</p>
-            <p>地点：<b>江西省景德镇市罗曼园酒店</b></p>
+            <div v-html="INVITATION_TITLE" class="invitation-title"></div>
+
+            <div v-html="OUR_STORY" class="invitation-content"></div>
+            <div v-html="SCHEDULE" class="invitation-content"></div>
+            <div class="invitation-content">
+              <div class="invitation-content-title">婚礼倒计时</div>
+            </div>
+            <div v-html="SAY_THANKS" class="invitation-content"></div>
+
             <div class="content-inside-bless">
               <button @click="closeInvitation">关闭</button>
             </div>
@@ -24,11 +29,64 @@
 </template>
 
 <script>
+const INVITATION_TITLE = `
+  <div>✿ 柳靓云 & 张克毅 ✿</div>
+  <div>我们结婚啦！</div>
+  <div>诚邀您参加我们的婚礼</div>
+  <div style="text-decoration: underline; margin-top: 5px;">景德镇市罗曼园酒店</div>
+  <div style="text-decoration: underline;">2022.01.01</div>
+  <div style="text-decoration: underline;">我们不见不散</div>
+`
+
+const OUR_STORY = `
+  <div class="invitation-content-title">我们的故事</div>
+  <div>相识7年 相恋6年</div>
+  <div>从同学到恋人</div>
+  <div>我们是彼此最好时光的礼物</div>
+  <div>如今在新年伊始</div>
+  <div>我们决定开启人生的新篇章</div>
+  <div>让爱以夫妻之名延续</div>
+  <div>成为彼此生命中</div>
+  <div>最重要的那个人</div>
+  <div>YES, I DO</div>
+  <div>从此</div>
+  <div>一屋 两人 三餐 四季</div>
+`
+
+const SCHEDULE = `
+  <div class="invitation-content-title">婚礼流程</div>
+  <ul>
+    <li>16:30 ~ 17:30 &nbsp; 宾客签到</li>
+    <li>18:00 ~ 18:30 &nbsp; 婚礼仪式</li>
+    <li>18:30 ~ 20:00 &nbsp; 宴会开始</li>
+  </ul>
+`
+
+const SAY_THANKS = `
+  <div class="invitation-content-title">写在最后</div>
+  <div>以前我觉得</div>
+  <div>婚礼是一则官方公告</div>
+  <div>后来我才明白</div>
+  <div>这是一场人生为数不多的相聚</div>
+  <div>是千里迢迢的奔赴</div>
+  <div>是不计得失的支持</div>
+  <div>感谢您抽出宝贵的时间</div>
+  <div>为我们共同庆祝这特别的一天</div>
+  <div>感恩有你的支持</div>
+  <div>也非常荣幸能与您分享我们的爱情</div>
+  <div>愿看到这段文字的你们</div>
+  <div>平安喜乐 一生顺遂</div>
+`
+
 export default {
   props: ['canOpen'],
   data() {
     return {
       isOpening: false,
+      INVITATION_TITLE,
+      OUR_STORY,
+      SCHEDULE,
+      SAY_THANKS,
     }
   },
   methods: {
@@ -114,33 +172,16 @@ export default {
               padding: 5px;
               border: 1px solid #f7debb;
             }
-            p{
-              margin-top: 0;
-              margin-bottom: 5px;
-            }
             .content-inside-bless{
-              >div{
-                display: flex;
-                button{
-                  width: 100%;
-                  height: 35px;
-                  color: #a9895d;
-                  background: #f7debb;
-                  border: none;
-                  outline: none;
-                  &:disabled{
-                    opacity: 0.8;
-                  }
-                  &:first-child{
-                    margin-right: 10px;
-                    flex: 1;
-                  }
-                  &:last-child{
-                    width: 60px;
-                    border: 1px solid #f7debb;
-                    background: transparent;
-                  }
-                }
+              margin-top: 20px;
+              button{
+                width: 100%;
+                height: 35px;
+                color: #a9895d;
+                background: #f7debb;
+                border: none;
+                border-radius: 20px;
+                outline: none;
               }
             }
           }
@@ -194,13 +235,30 @@ export default {
           width: 35%;
           height: 45%;
         }
-
         .cover-inside-seal, .cover-inside-title {
           position: absolute;
           z-index: 7;
 
           &.invitation-flight{
             display: none;
+          }
+        }
+
+        .invitation-title {
+          font-weight: bold;
+          line-height: 26px;
+          padding-bottom: 30px;
+          border-bottom: 1px solid #f7debb;
+        }
+        .invitation-content {
+          line-height: 26px;
+          padding: 30px 0;
+          border-bottom: 1px solid #f7debb;
+          &-title {
+            font-size: 20px;
+            font-weight: bolder;
+            margin-bottom: 20px;
+            color: darkred;
           }
         }
       }
