@@ -16,7 +16,8 @@
         </div>
         <div class="cover-inside-left" :class="{'opening':isOpening}"></div>
         <div class="cover-inside-right" :class="{'opening':isOpening}"></div>
-        <img class="cover-inside-seal" src="../images/seal.png" @click="openInvitation" :class="{'invitation-flight':isOpening}">
+        <img class="cover-inside-title" src="../images/title.jpeg" :class="{'invitation-flight':isOpening}" />
+        <img class="cover-inside-seal" src="../images/seal.png" @click="openInvitation" :class="{'invitation-flight':isOpening}" />
       </div>
     </div>
   </div>
@@ -35,7 +36,7 @@ export default {
     openInvitation(){
       this.isOpening = true
     },
-    closeInvitation () {
+    closeInvitation() {
       this.isOpening = false
       setTimeout(() => {
         this.$emit('onClose')
@@ -154,8 +155,6 @@ export default {
           background-color: #D65047;
           box-shadow: 5px 0 10px rgba(0,0,0,0.2);
           z-index: 6;
-          transition: transform 0.5s;
-          -webkit-transition: -webkit-transform 0.5s;
           transform-origin: 0 50%;
           -webkit-transform-origin: 0 50%;
           &.opening{
@@ -173,8 +172,6 @@ export default {
           background-color: #D65047;
           box-shadow: -5px 0 10px rgba(0,0,0,0.2);
           z-index: 5;
-          transition: transform 0.5s;
-          -webkit-transition: -webkit-transform 0.5s;
           transform-origin: 100% 50%;
           -webkit-transform-origin: 100% 50%;
           &.opening{
@@ -183,19 +180,27 @@ export default {
           }
         }
         .cover-inside-seal{
-          position: absolute;
           left: 70%;
           bottom: 100px;
           width: 80px;
           height: 80px;
           margin-left: -40px;
-          z-index: 7;
           transform-origin: 50% 50%;
           -webkit-transform-origin: 50% 50%;
-          transition: all 0.8s cubic-bezier(0.4, 0, 1, 1);
-          -webkit-transition: all 0.8s cubic-bezier(0.4, 0, 1, 1);
+        }
+        .cover-inside-title {
+          left: 15%;
+          top: 10%;
+          width: 35%;
+          height: 45%;
+        }
+
+        .cover-inside-seal, .cover-inside-title {
+          position: absolute;
+          z-index: 7;
+
           &.invitation-flight{
-            opacity: 0;
+            display: none;
           }
         }
       }
