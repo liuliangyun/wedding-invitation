@@ -3,7 +3,7 @@
     <div class="invitation-container" :class="{ 'invitation-down':isOpening }">
       <div class="invitation-cover">
         <div class="cover-content" :class="{'invitation-up':isOpening}">
-          <div class="content-inside">
+          <div id="scroll-area" class="content-inside">
             <img class="content-inside-photo" src="../images/photo-new.jpeg">
             <div v-html="INVITATION_TITLE" class="invitation-title"></div>
 
@@ -64,9 +64,6 @@ const SCHEDULE = `
 
 const SAY_THANKS = `
   <div class="invitation-content-title">写在最后</div>
-  <div>以前我觉得</div>
-  <div>婚礼是一则官方公告</div>
-  <div>后来我才明白</div>
   <div>这是一场人生为数不多的相聚</div>
   <div>是千里迢迢的奔赴</div>
   <div>是不计得失的支持</div>
@@ -87,20 +84,46 @@ export default {
       OUR_STORY,
       SCHEDULE,
       SAY_THANKS,
+      timer: null,
     }
   },
   methods: {
     // 打开邀请函
     openInvitation(){
       this.isOpening = true
+      this.autoScroll('scroll-area')
     },
     closeInvitation() {
       this.isOpening = false
+      this.clearRollTimer()
       setTimeout(() => {
         this.$emit('onClose')
       }, 660)
     },
-  }
+    clearRollTimer() {
+      clearInterval(this.timer)
+      this.timer = null
+    },
+    setRollTimer(id) {
+      this.timer = setInterval(function () {
+        // 获取当前滚动条高度，以25ms / 3.5px的速度滚动
+        let current = document.getElementById(id).scrollTop
+        document.getElementById(id).scrollTop = current + 1
+      }, 50)
+    },
+    // 自动滚动
+    autoScroll(id) {
+      document.getElementById(id).onclick = () => {
+        if (this.timer) {
+          this.clearRollTimer()
+        } else {
+          this.setRollTimer(id)
+        }
+      }
+
+      this.setRollTimer(id)
+    }
+  },
 }
 </script>
 
