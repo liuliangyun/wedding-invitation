@@ -11,6 +11,24 @@
             <div v-html="SCHEDULE" class="invitation-content"></div>
             <div class="invitation-content">
               <div class="invitation-content-title">婚礼倒计时</div>
+              <div class="clock">
+                <div>
+                  <span>{{remainTime.day}}</span>
+                  <span>天</span>
+                </div>
+                <div>
+                  <span>{{remainTime.hour}}</span>
+                  <span>时</span>
+                </div>
+                <div>
+                  <span>{{remainTime.minute}}</span>
+                  <span>分</span>
+                </div>
+                <div>
+                  <span>{{remainTime.second}}</span>
+                  <span>秒</span>
+                </div>
+              </div>
             </div>
             <div v-html="SAY_THANKS" class="invitation-content"></div>
 
@@ -29,6 +47,10 @@
 </template>
 
 <script>
+import moment from 'moment'
+
+const WEDDING_TIME = moment('2022-01-01 16:30:00')
+
 const INVITATION_TITLE = `
   <div>✿ 柳靓云 & 张克毅 ✿</div>
   <div>我们结婚啦！</div>
@@ -84,7 +106,14 @@ export default {
       OUR_STORY,
       SCHEDULE,
       SAY_THANKS,
-      timer: null,
+      rollTimer: null,
+      clockTimer: null,
+      remainTime: {
+        day: 0,
+        hour: 0,
+        minute: 0,
+        second: 0,
+      }
     }
   },
   methods: {
@@ -92,29 +121,46 @@ export default {
     openInvitation(){
       this.isOpening = true
       this.autoScroll('scroll-area')
+      this.computeRemainTime()
     },
     closeInvitation() {
       this.isOpening = false
       this.clearRollTimer()
+      this.clearClockTimer()
       setTimeout(() => {
         this.$emit('onClose')
       }, 660)
     },
     clearRollTimer() {
-      clearInterval(this.timer)
-      this.timer = null
+      clearInterval(this.rollTimer)
+      this.rollTimer = null
+    },
+    clearClockTimer() {
+      clearInterval(this.clockTimer)
+      this.clockTimer = null
     },
     setRollTimer(id) {
-      this.timer = setInterval(function () {
+      this.rollTimer = setInterval(function () {
         // 获取当前滚动条高度，以25ms / 3.5px的速度滚动
         let current = document.getElementById(id).scrollTop
         document.getElementById(id).scrollTop = current + 1
       }, 50)
     },
+    setClockTimer() {
+      this.clockTimer = setInterval(() => {
+        const duration = moment.duration(WEDDING_TIME.diff(moment()))
+        this.remainTime = {
+          day: Math.floor(duration.asDays()) >= 0 ? Math.floor(duration.asDays()) : 0,
+          hour: duration.hours() >= 0 ? duration.hours() : 0,
+          minute: duration.minutes() >= 0 ? duration.minutes() : 0,
+          second: duration.seconds() >= 0 ? duration.seconds() : 0,
+        }
+      }, 1000)
+    },
     // 自动滚动
     autoScroll(id) {
       document.getElementById(id).onclick = () => {
-        if (this.timer) {
+        if (this.rollTimer) {
           this.clearRollTimer()
         } else {
           this.setRollTimer(id)
@@ -122,6 +168,11 @@ export default {
       }
 
       this.setRollTimer(id)
+    },
+    computeRemainTime() {
+      if (WEDDING_TIME.isAfter(moment())) {
+        this.setClockTimer()
+      }
     }
   },
 }
@@ -282,6 +333,24 @@ export default {
             font-weight: bolder;
             margin-bottom: 20px;
             color: darkred;
+          }
+          .clock {
+            display: flex;
+            align-items: center;
+            color: white;
+            line-height: 20px;
+            font-size: 16px;
+
+            & > div {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              background-color: #5d5d5d;
+              padding: 10px 0;
+              margin:  0 20px;
+              border-radius: 5px;
+            }
           }
         }
       }
