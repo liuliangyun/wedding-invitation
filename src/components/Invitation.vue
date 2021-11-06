@@ -11,49 +11,50 @@
               <div class="invitation-content">
                 <div class="invitation-content-title">我们的故事</div>
                 <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
-                  <img style="width: 65%; height: 400px;" src="../images/bridegroom-single.jpg" />
-                  <div style="width: 30%; font-size: 16px; font-weight: bold;">
-                    <div>❤️ 新郎 ❤️</div>
+                  <img style="width: 65%;" src="../images/bridegroom-single.jpg" />
+                  <div style="width: 32%;">
+                    <div>❤️新郎❤️</div>
                     <div>张克毅</div>
                   </div>
                 </div>
                 <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
-                  <div style="width: 30%; font-size: 16px; font-weight: bold;">
-                    <div>❤️ 新娘 ❤️</div>
+                  <div style="width: 32%;">
+                    <div>❤️新娘❤️</div>
                     <div>柳靓云</div>
                   </div>
-                  <img style="width: 65%; height: 400px;" src="../images/bride-single.jpg" />
+                  <img style="width: 65%;" src="../images/bride-single.jpg" />
                 </div>
                 <div style="margin: 20px 0;">
                   <div>相识7年 相恋6年</div>
                   <div>从同学到恋人</div>
                   <div>我们像彼此间的礼物</div>
                   <div>不断给对方快乐和惊喜</div>
-                  <img style="width: 100%; height: 300px; margin-top: 20px;" src="../images/bride-bridegroom1.jpg" />
+                  <img style="width: 100%; margin: 20px 0;" src="../images/bride-bridegroom1.jpg" />
                   <div>最好的爱情大概就是</div>
                   <div>你在闹 他陪着你闹</div>
                   <div>爱情里越幼稚</div>
                   <div>就显得越甜蜜</div>
                 </div>
                 <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
-                  <img style="width: 65%; height: 400px;" src="../images/bride-bridegroom2.jpg" />
-                  <div style="width: 30%;">
+                  <img style="width: 65%;" src="../images/bride-bridegroom2.jpg" />
+                  <div style="width: 32%;">
                     <div>始于初见</div>
                     <div>陷于陪伴</div>
                     <div>终于白首</div>
                   </div>
                 </div>
                 <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
-                  <div style="width: 30%;">
-                    <div>我们决定开启</div>
-                    <div>人生的新篇章</div>
-                    <div>让爱以夫妻之名延续</div>
-                    <div>成为彼此生命中</div>
-                    <div>最重要的那个人</div>
+                  <div style="width: 32%;">
+                    <div>我们决定</div>
+                    <div>开启人生的</div>
+                    <div>新篇章</div>
                   </div>
-                  <img style="width: 65%; height: 400px;" src="../images/bride-bridegroom4.jpg" />
+                  <img style="width: 65%;" src="../images/bride-bridegroom4.jpg" />
                 </div>
                 <div>
+                  <div>让爱以夫妻之名延续</div>
+                  <div>成为彼此生命中</div>
+                  <div>最重要的那个人</div>
                   <div>从此</div>
                   <div>一屋 两人 三餐 四季</div>
                 </div>
@@ -378,18 +379,17 @@ export default {
           .clock {
             display: flex;
             align-items: center;
+            justify-content: space-evenly;
             color: white;
             line-height: 20px;
-            font-size: 16px;
 
             & > div {
-              flex: 1;
+              width: 20%;
               display: flex;
               flex-direction: column;
               align-items: center;
               background-color: #5d5d5d;
               padding: 10px 0;
-              margin:  0 20px;
               border-radius: 5px;
             }
           }
