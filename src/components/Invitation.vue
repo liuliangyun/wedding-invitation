@@ -4,11 +4,62 @@
       <div class="invitation-cover">
         <div class="cover-content" :class="{'invitation-up':isOpening}">
           <div id="scroll-area" class="content-inside">
-            <img class="content-inside-photo" src="../images/photo-new.jpeg">
+            <img class="content-inside-photo" src="../images/photo-new.jpeg" />
             <div v-html="INVITATION_TITLE" class="invitation-title"></div>
 
-            <div v-html="OUR_STORY" class="invitation-content"></div>
+            <div class="invitation-content">
+              <div class="invitation-content-title">我们的故事</div>
+              <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
+                <img style="width: 65%; height: 400px;" src="../images/bridegroom-single.jpg" />
+                <div style="width: 30%; font-size: 16px; font-weight: bold;">
+                  <div>❤️ 新郎 ❤️</div>
+                  <div>张克毅</div>
+                </div>
+              </div>
+              <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
+                <div style="width: 30%; font-size: 16px; font-weight: bold;">
+                  <div>❤️ 新娘 ❤️</div>
+                  <div>柳靓云</div>
+                </div>
+                <img style="width: 65%; height: 400px;" src="../images/bride-single.jpg" />
+              </div>
+              <div style="margin: 20px 0;">
+                <div>相识7年 相恋6年</div>
+                <div>从同学到恋人</div>
+                <div>我们像彼此间的礼物</div>
+                <div>不断给对方快乐和惊喜</div>
+                <img style="width: 100%; height: 300px; margin-top: 20px;" src="../images/bride-bridegroom1.jpg" />
+                <div>最好的爱情大概就是</div>
+                <div>你在闹 他陪着你闹</div>
+                <div>爱情里越幼稚</div>
+                <div>就显得越甜蜜</div>
+              </div>
+              <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
+                <img style="width: 65%; height: 400px;" src="../images/bride-bridegroom2.jpg" />
+                <div style="width: 30%;">
+                  <div>始于初见</div>
+                  <div>陷于陪伴</div>
+                  <div>终于白首</div>
+                </div>
+              </div>
+              <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
+                <div style="width: 30%;">
+                  <div>我们决定开启</div>
+                  <div>人生的新篇章</div>
+                  <div>让爱以夫妻之名延续</div>
+                  <div>成为彼此生命中</div>
+                  <div>最重要的那个人</div>
+                </div>
+                <img style="width: 65%; height: 400px;" src="../images/bride-bridegroom4.jpg" />
+              </div>
+              <div>
+                <div>从此</div>
+                <div>一屋 两人 三餐 四季</div>
+              </div>
+            </div>
+
             <div v-html="SCHEDULE" class="invitation-content"></div>
+
             <div class="invitation-content">
               <div class="invitation-content-title">婚礼倒计时</div>
               <div class="clock">
@@ -30,6 +81,7 @@
                 </div>
               </div>
             </div>
+
             <div v-html="SAY_THANKS" class="invitation-content"></div>
 
             <div class="content-inside-bless">
@@ -60,21 +112,6 @@ const INVITATION_TITLE = `
   <div style="text-decoration: underline;">我们不见不散</div>
 `
 
-const OUR_STORY = `
-  <div class="invitation-content-title">我们的故事</div>
-  <div>相识7年 相恋6年</div>
-  <div>从同学到恋人</div>
-  <div>我们是彼此最好时光的礼物</div>
-  <div>如今在新年伊始</div>
-  <div>我们决定开启人生的新篇章</div>
-  <div>让爱以夫妻之名延续</div>
-  <div>成为彼此生命中</div>
-  <div>最重要的那个人</div>
-  <div>YES, I DO</div>
-  <div>从此</div>
-  <div>一屋 两人 三餐 四季</div>
-`
-
 const SCHEDULE = `
   <div class="invitation-content-title">婚礼流程</div>
   <ul>
@@ -103,7 +140,6 @@ export default {
     return {
       isOpening: false,
       INVITATION_TITLE,
-      OUR_STORY,
       SCHEDULE,
       SAY_THANKS,
       rollTimer: null,
