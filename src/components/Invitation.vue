@@ -4,85 +4,87 @@
       <div class="invitation-cover">
         <div class="cover-content" :class="{'invitation-up':isOpening}">
           <div id="scroll-area" class="content-inside">
-            <img class="content-inside-photo" src="../images/photo-new.jpeg" />
-            <div v-html="INVITATION_TITLE" class="invitation-title"></div>
+            <div id="scroll-content">
+              <img class="content-inside-photo" src="../images/photo-new.jpeg" />
+              <div v-html="INVITATION_TITLE" class="invitation-title"></div>
 
-            <div class="invitation-content">
-              <div class="invitation-content-title">我们的故事</div>
-              <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
-                <img style="width: 65%; height: 400px;" src="../images/bridegroom-single.jpg" />
-                <div style="width: 30%; font-size: 16px; font-weight: bold;">
-                  <div>❤️ 新郎 ❤️</div>
-                  <div>张克毅</div>
+              <div class="invitation-content">
+                <div class="invitation-content-title">我们的故事</div>
+                <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
+                  <img style="width: 65%; height: 400px;" src="../images/bridegroom-single.jpg" />
+                  <div style="width: 30%; font-size: 16px; font-weight: bold;">
+                    <div>❤️ 新郎 ❤️</div>
+                    <div>张克毅</div>
+                  </div>
+                </div>
+                <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
+                  <div style="width: 30%; font-size: 16px; font-weight: bold;">
+                    <div>❤️ 新娘 ❤️</div>
+                    <div>柳靓云</div>
+                  </div>
+                  <img style="width: 65%; height: 400px;" src="../images/bride-single.jpg" />
+                </div>
+                <div style="margin: 20px 0;">
+                  <div>相识7年 相恋6年</div>
+                  <div>从同学到恋人</div>
+                  <div>我们像彼此间的礼物</div>
+                  <div>不断给对方快乐和惊喜</div>
+                  <img style="width: 100%; height: 300px; margin-top: 20px;" src="../images/bride-bridegroom1.jpg" />
+                  <div>最好的爱情大概就是</div>
+                  <div>你在闹 他陪着你闹</div>
+                  <div>爱情里越幼稚</div>
+                  <div>就显得越甜蜜</div>
+                </div>
+                <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
+                  <img style="width: 65%; height: 400px;" src="../images/bride-bridegroom2.jpg" />
+                  <div style="width: 30%;">
+                    <div>始于初见</div>
+                    <div>陷于陪伴</div>
+                    <div>终于白首</div>
+                  </div>
+                </div>
+                <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
+                  <div style="width: 30%;">
+                    <div>我们决定开启</div>
+                    <div>人生的新篇章</div>
+                    <div>让爱以夫妻之名延续</div>
+                    <div>成为彼此生命中</div>
+                    <div>最重要的那个人</div>
+                  </div>
+                  <img style="width: 65%; height: 400px;" src="../images/bride-bridegroom4.jpg" />
+                </div>
+                <div>
+                  <div>从此</div>
+                  <div>一屋 两人 三餐 四季</div>
                 </div>
               </div>
-              <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
-                <div style="width: 30%; font-size: 16px; font-weight: bold;">
-                  <div>❤️ 新娘 ❤️</div>
-                  <div>柳靓云</div>
-                </div>
-                <img style="width: 65%; height: 400px;" src="../images/bride-single.jpg" />
-              </div>
-              <div style="margin: 20px 0;">
-                <div>相识7年 相恋6年</div>
-                <div>从同学到恋人</div>
-                <div>我们像彼此间的礼物</div>
-                <div>不断给对方快乐和惊喜</div>
-                <img style="width: 100%; height: 300px; margin-top: 20px;" src="../images/bride-bridegroom1.jpg" />
-                <div>最好的爱情大概就是</div>
-                <div>你在闹 他陪着你闹</div>
-                <div>爱情里越幼稚</div>
-                <div>就显得越甜蜜</div>
-              </div>
-              <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
-                <img style="width: 65%; height: 400px;" src="../images/bride-bridegroom2.jpg" />
-                <div style="width: 30%;">
-                  <div>始于初见</div>
-                  <div>陷于陪伴</div>
-                  <div>终于白首</div>
+
+              <div v-html="SCHEDULE" class="invitation-content"></div>
+
+              <div class="invitation-content">
+                <div class="invitation-content-title">婚礼倒计时</div>
+                <div class="clock">
+                  <div>
+                    <span>{{remainTime.day}}</span>
+                    <span>天</span>
+                  </div>
+                  <div>
+                    <span>{{remainTime.hour}}</span>
+                    <span>时</span>
+                  </div>
+                  <div>
+                    <span>{{remainTime.minute}}</span>
+                    <span>分</span>
+                  </div>
+                  <div>
+                    <span>{{remainTime.second}}</span>
+                    <span>秒</span>
+                  </div>
                 </div>
               </div>
-              <div style="margin: 20px 0; display: flex; align-items: center; justify-content: space-between;">
-                <div style="width: 30%;">
-                  <div>我们决定开启</div>
-                  <div>人生的新篇章</div>
-                  <div>让爱以夫妻之名延续</div>
-                  <div>成为彼此生命中</div>
-                  <div>最重要的那个人</div>
-                </div>
-                <img style="width: 65%; height: 400px;" src="../images/bride-bridegroom4.jpg" />
-              </div>
-              <div>
-                <div>从此</div>
-                <div>一屋 两人 三餐 四季</div>
-              </div>
+
+              <div v-html="SAY_THANKS" class="invitation-content"></div>
             </div>
-
-            <div v-html="SCHEDULE" class="invitation-content"></div>
-
-            <div class="invitation-content">
-              <div class="invitation-content-title">婚礼倒计时</div>
-              <div class="clock">
-                <div>
-                  <span>{{remainTime.day}}</span>
-                  <span>天</span>
-                </div>
-                <div>
-                  <span>{{remainTime.hour}}</span>
-                  <span>时</span>
-                </div>
-                <div>
-                  <span>{{remainTime.minute}}</span>
-                  <span>分</span>
-                </div>
-                <div>
-                  <span>{{remainTime.second}}</span>
-                  <span>秒</span>
-                </div>
-              </div>
-            </div>
-
-            <div v-html="SAY_THANKS" class="invitation-content"></div>
 
             <div class="content-inside-bless">
               <button @click="closeInvitation">关闭</button>
@@ -156,7 +158,7 @@ export default {
     // 打开邀请函
     openInvitation(){
       this.isOpening = true
-      this.autoScroll('scroll-area')
+      this.autoScroll('scroll-area', 'scroll-content')
       this.computeRemainTime()
     },
     closeInvitation() {
@@ -168,6 +170,7 @@ export default {
       }, 660)
     },
     clearRollTimer() {
+      console.log('clear roll timer')
       clearInterval(this.rollTimer)
       this.rollTimer = null
     },
@@ -176,6 +179,7 @@ export default {
       this.clockTimer = null
     },
     setRollTimer(id) {
+      console.log('set roll timer')
       this.rollTimer = setInterval(function () {
         // 获取当前滚动条高度，以25ms / 3.5px的速度滚动
         let current = document.getElementById(id).scrollTop
@@ -194,8 +198,9 @@ export default {
       }, 1000)
     },
     // 自动滚动
-    autoScroll(id) {
-      document.getElementById(id).onclick = () => {
+    autoScroll(id, contentId) {
+      document.getElementById(id).scrollTop = 0
+      document.getElementById(contentId).onclick = () => {
         if (this.rollTimer) {
           this.clearRollTimer()
         } else {
