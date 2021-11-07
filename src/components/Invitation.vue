@@ -1,6 +1,7 @@
 <template>
   <div class="wedding-invitation" :class="{ 'invitation-bounce':canOpen }">
     <div class="invitation-container" :class="{ 'invitation-down':isOpening }">
+      <audio id="audio" :src="require('../music/you.mp3')" loop />
       <div class="invitation-cover">
         <div class="cover-content" :class="{'invitation-up':isOpening}">
           <div id="scroll-area" class="content-inside">
@@ -161,6 +162,7 @@ export default {
       this.isOpening = true
       this.autoScroll('scroll-area', 'scroll-content')
       this.computeRemainTime()
+      this.audioAutoPlay()
     },
     closeInvitation() {
       this.isOpening = false
@@ -169,6 +171,7 @@ export default {
       setTimeout(() => {
         this.$emit('onClose')
       }, 660)
+      this.audioStopPlay()
     },
     clearRollTimer() {
       console.log('clear roll timer')
@@ -215,6 +218,15 @@ export default {
       if (WEDDING_TIME.isAfter(moment())) {
         this.setClockTimer()
       }
+    },
+    audioAutoPlay() {
+      const audio = document.getElementById('audio')
+      audio.play()
+    },
+    audioStopPlay() {
+      const audio = document.getElementById('audio')
+      audio.currentTime = 0
+      audio.pause()
     }
   },
 }
