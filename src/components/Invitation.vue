@@ -96,6 +96,9 @@
         <div class="cover-inside-left" :class="{'opening':isOpening}"></div>
         <div class="cover-inside-right" :class="{'opening':isOpening}"></div>
         <img class="cover-inside-title" src="../images/title.jpeg" :class="{'invitation-flight':isOpening}" />
+        <div v-if="name" :class="['cover-inside-person', {'invitation-flight':isOpening}]">
+          送呈&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{name}}
+        </div>
         <img class="cover-inside-seal" src="../images/seal.png" @click="openInvitation" :class="{'invitation-flight':isOpening}" />
       </div>
     </div>
@@ -154,6 +157,11 @@ export default {
         minute: 0,
         second: 0,
       }
+    }
+  },
+  computed: {
+    name() {
+      return this.$route.query.name
     }
   },
   methods: {
@@ -363,7 +371,18 @@ export default {
           width: 35%;
           height: 45%;
         }
-        .cover-inside-seal, .cover-inside-title {
+        .cover-inside-person {
+          font-size: 30px;
+          font-variant-east-asian: traditional;
+          color: #ead6ac;
+          top: 5%;
+          right: 5%;
+          height: 45%;
+          writing-mode: vertical-rl;
+          writing-mode: tb-rl;
+        }
+
+        .cover-inside-seal, .cover-inside-title, .cover-inside-person {
           position: absolute;
           z-index: 7;
 
